@@ -6,7 +6,7 @@
 /*   By: ahenry <ahenry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 02:29:22 by ahenry            #+#    #+#             */
-/*   Updated: 2019/07/10 12:08:47 by ahenry           ###   ########.fr       */
+/*   Updated: 2019/07/10 20:01:59 by ahenry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int		ft_strlen(char *str);
 void	ft_rev_int_tab(int *tab, int size);
 void	ft_sort_int_tab(int *tab, int size);
 
-int		main(void)
+int		main(int argc, char **argv)
 {
+	int exo;
 	int test;
 	int test2;
 	int div;
@@ -43,6 +44,10 @@ int		main(void)
 	int tabtest[5];
 	int tabsize;
 
+	if (argc >= 2)
+		exo = atoi(argv[1]);
+	else
+		exo = -1;
 	test = 5;
 	test2 = 21;
 	div = 1;
@@ -61,38 +66,60 @@ int		main(void)
 	srand (time (NULL));
 	for (int i = 0; i < tabsize; i++)
 		tabtest[i] = rand() % 100 + 1;
-
-	ft_ft(&test);
-	printf("ex00 : %d\n", test);
-	test = 21;
-	printf("change valeur : %d\n", test);
-	ft_ultimate_ft(ptr9);
-	printf("ex01 : %d\n", test);
-	printf("ex02 : params : %d, %d", test, test2);
-	ft_swap(&test, &test2);
-	printf(" | result : %d, %d\n", test, test2);
-	ft_div_mod(test2, test, &div, &mod);
-	printf("ex03 : %d / %d => div : %d, mod : %d\n", test2, test, div, mod);
-	printf("ex04 : params : %d, %d", test2, test);
-	ft_ultimate_div_mod(&test2, &test);
-	printf(" | result : %d, %d\n", test2, test);
-	ft_putstr("ex05 : test ft_putstr\n");
-	printf("ex06 : %s => %d\n", teststr, ft_strlen(teststr));
-	printf("ex07 : params : [ ");
-	for (int i = 0; i < tabsize; i++)
-		printf("%d ", tabtest[i]);
-	ft_rev_int_tab(tabtest, tabsize);
-	printf("] | result : [ ");
-	for (int i = 0; i < tabsize; i++)
-		printf("%d ", tabtest[i]);
-	printf("]\n");
-	printf("ex08 : params : [ ");
-	for (int i = 0; i < tabsize; i++)
-		printf("%d ", tabtest[i]);
-	ft_sort_int_tab(tabtest, tabsize);
-	printf("] | result : [ ");
-	for (int i = 0; i < tabsize; i++)
-		printf("%d ", tabtest[i]);
-	printf("]\n");	
+	if (exo >= 0)
+	{
+		ft_ft(&test);
+		printf("ex00 : %d\n", test);
+	}
+	if (exo >= 1)
+	{
+		test = 21;
+		printf("change valeur : %d\n", test);
+		ft_ultimate_ft(ptr9);
+		printf("ex01 : %d\n", test);
+	}
+	if (exo >= 2)
+	{
+		printf("ex02 : params : %d, %d", test, test2);
+		ft_swap(&test, &test2);
+		printf(" | result : %d, %d\n", test, test2);
+	}
+	if (exo >= 3)
+	{
+		ft_div_mod(test2, test, &div, &mod);
+		printf("ex03 : %d / %d => div : %d, mod : %d\n", test2, test, div, mod);
+	}
+	if (exo >= 4)
+	{
+		printf("ex04 : params : %d, %d", test2, test);
+		ft_ultimate_div_mod(&test2, &test);
+		printf(" | result : %d, %d\n", test2, test);
+	}
+	if (exo >= 5)
+		ft_putstr("ex05 : test ft_putstr\n");
+	if (exo >= 6)
+		printf("ex06 : %s => %d\n", teststr, ft_strlen(teststr));
+	if (exo >= 7)
+	{
+		printf("ex07 : params : [ ");
+		for (int i = 0; i < tabsize; i++)
+			printf("%d ", tabtest[i]);
+		ft_rev_int_tab(tabtest, tabsize);
+		printf("] | result : [ ");
+		for (int i = 0; i < tabsize; i++)
+			printf("%d ", tabtest[i]);
+		printf("]\n");
+	}
+	if (exo >= 8)
+	{	
+		printf("ex08 : params : [ ");
+		for (int i = 0; i < tabsize; i++)
+			printf("%d ", tabtest[i]);
+		ft_sort_int_tab(tabtest, tabsize);
+		printf("] | result : [ ");
+		for (int i = 0; i < tabsize; i++)
+			printf("%d ", tabtest[i]);
+		printf("]\n");	
+	}
 	return (0);
 }

@@ -4,4 +4,4 @@ FILES_TO_COMP=$(find . -type f -name "*.c")
 echo -e "\nFichiers compiles :\n\n $FILES_TO_COMP\n"
 gcc -Wall -Wextra -Werror -o f $FILES_TO_COMP
 echo -e "Test :\n"
-./f
+./f $1
